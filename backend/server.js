@@ -12,7 +12,7 @@ import multer from 'multer';
 dotenv.config();
 const app = express();
 
-const port  = 5000;
+const port  = process.env.PORT;
 
 mongoose.connect(
     process.env.MONGO_URI,
@@ -55,5 +55,5 @@ app.use("/api/posts", postRouter);
 
 
 app.listen(port , () =>{
-    console.log("Server is up")
+    console.log("Server is up on " + port)
 })
