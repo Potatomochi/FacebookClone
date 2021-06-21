@@ -8,10 +8,6 @@ import authenticateRouter from './routes/auth.js';
 import postRouter from './routes/post.js';
 import path from 'path';
 import multer from 'multer';
-import data from './data.js';
-import User from './models/Users.js';
-import Post from './models/Post.js';
-
 
 dotenv.config();
 const app = express();
@@ -56,13 +52,6 @@ app.post("/api/upload", upload.single("file") , (req,res) => {
 app.use("/api/auth", authenticateRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
-
-app.get('/', async (req,res) => {
-    const createdUsers = await User.insertMany(data.users);
-    const createdPosts = await Post.insertMany(data.posts);
-    res.send({createdUsers,createdPosts})
-} )
-
 
 
 app.listen(port , () =>{
