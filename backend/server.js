@@ -59,6 +59,16 @@ app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
 
 
+app.get('/',(req,res) => {
+    res.send('Server is ready');
+});
+
+
+
+app.use((err,req,res,next) =>{
+    res.status(500).send({ message: err.message });
+})
+
 app.listen(port , () =>{
     console.log("Server is up on " + port)
 })

@@ -14,7 +14,7 @@ export const userSignInFailure = (error) => ({
 export const userSignIn = async(userCredential,dispatch) => {
     dispatch({ type: "USER_SIGN_IN_REQUEST"});
     try {
-        const res = await axios.post("/auth/login" , userCredential)
+        const res = await axios.post("/api/auth/login" , userCredential)
         dispatch({type:"USER_SIGN_IN_SUCCESS" , payload:res.data})
     } catch (err) {
         dispatch({type:"USER_SIGN_IN_FAILURE" , payload: err})
