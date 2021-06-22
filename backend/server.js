@@ -22,8 +22,13 @@ mongoose.connect(
     }
 );
 const __dirname = path.resolve();
-console.log(__dirname)
+
 app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, '/frontend/build')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+})
+
 
 app.use(express.json());
 app.use(helmet());
