@@ -13,12 +13,12 @@ function Profile() {
 
     useEffect(() =>{
         const fetchUser = async() =>{
-            const result = await axios.get(`/users?username=${username}`)
+            const result = await axios.get(`/api/users?username=${username}`)
             setUser(result.data)
         }
         fetchUser()
     },[username])
-    console.log(user)
+
     return (
 
         <>

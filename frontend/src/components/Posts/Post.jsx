@@ -21,7 +21,7 @@ function Post({post}) {
 
     useEffect(() =>{
       const fetchUser = async() =>{
-          const result = await axios.get(`/users?userId=${post.userId}`)
+          const result = await axios.get(`/api/users?userId=${post.userId}`)
           setUser(result.data)
       }
       fetchUser()
@@ -30,7 +30,7 @@ function Post({post}) {
 
     const likeHandler =()=>{
       try {
-        axios.put("/posts/" + post._id + "/like" , {userId:currentUser._id})
+        axios.put("/api/posts/" + post._id + "/like" , {userId:currentUser._id})
       } catch (err) {
         //do something with error
       }
